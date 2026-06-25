@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mother Tracker</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<h1>Mother Tracker</h1>
+
+<form action="/add" method="POST">
+    <input name="name" placeholder="Mother name" required>
+
+    <select name="mode">
+        <option value="new">Start from 0 (today)</option>
+        <option value="existing">Already started</option>
+    </select>
+
+    <input name="days" placeholder="If existing, enter days">
+
+    <button type="submit">Add</button>
+</form>
+
+<hr>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Days Passed</th>
+    </tr>
+
+    {% for m in mothers %}
+    <tr>
+        <td>{{ m.name }}</td>
+        <td>{{ m.total_days }} days</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
